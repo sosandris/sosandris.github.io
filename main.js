@@ -269,7 +269,11 @@ function start() {
     const videoSource = videoSelect.value;
     const constraints = {
         //audio: { deviceId: audioSource ? { exact: audioSource } : undefined },
-        video: { deviceId: videoSource ? { exact: videoSource } : undefined }
+        video: {
+            deviceId: videoSource ? { exact: videoSource } : undefined,
+            width: currentWidth,
+            height: currentHeight,
+        }
     };
     navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleSelectVideoError);
 }
