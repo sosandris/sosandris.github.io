@@ -81,6 +81,7 @@ function capture() {
         .drawImage(video, 0, 0, currentWidth, currentHeight);
     capturedImage.src = canvas.toDataURL("image/jpeg");
     //this.captures.push(canvas.toDataURL("image/png"));
+    canvasWrapper.scrollIntoView();
 }
 
 const qvgaConstraints = {
@@ -201,7 +202,7 @@ function constraintChange(e) {
 //     }
 // };
 
-function getMedia(constraints) {
+function getMedia(dimensionConstraints) {
     if (stream) {
         stream.getTracks().forEach(track => {
             track.stop();
@@ -210,6 +211,10 @@ function getMedia(constraints) {
 
     clearErrorMessage();
     videoblock.style.display = 'none';
+    const constraints = {
+        ...dimensionConstraints,
+    }
+    constraints.video.deviceId = videoSelect.value ? { exact: videoSelect.value } : undefined;
     navigator.mediaDevices.getUserMedia(constraints)
         .then(gotStream)
         .catch(e => {
