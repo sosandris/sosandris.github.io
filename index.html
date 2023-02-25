@@ -1,0 +1,133 @@
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="description" content="WebRTC code samples">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta itemprop="description" content="Client-side WebRTC code samples">
+    <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png">
+    <meta itemprop="name" content="WebRTC code samples">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+
+    <base target="_blank">
+
+    <title>Select resolution</title>
+
+    <link rel="icon" sizes="192x192" href="../../../images/webrtc-icon-192x192.png">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <!-- <link rel="stylesheet" href="../../../css/main.css"> -->
+
+    <style>
+        body,
+        html {
+            height: 100%;
+        }
+
+        button {
+            margin: 0 10px 20px 0;
+            min-width: 90px;
+        }
+
+        div#buttons {
+            margin: 0 0 1em 0;
+        }
+
+        div#container {
+            max-width: 100%;
+        }
+
+        #errormessage {
+            display: none;
+            font-size: 300%;
+        }
+
+        #videoblock {
+            display: none;
+        }
+
+        p#dimensions {
+            height: 1em;
+            margin: 0 0 1.5em 0;
+        }
+
+        video {
+            background: none;
+            height: auto;
+            width: auto;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #errormessage {
+            background: #8e503d;
+            padding: 1rem;
+            color: #ffe7e7;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="video-source">
+            <div class="select">
+                <label for="videoSource">Video source: </label>
+                <select id="videoSource"></select>
+            </div>
+        </div>
+        <div id="resolution">
+            <p>Click a button to select resolution.</p>
+
+            <div id="buttons">
+                <button id="qvga">QVGA</button>
+                <button id="vga">VGA</button>
+                <button id="hd">HD</button>
+                <button id="full-hd">Full HD</button>
+                <button id="televisionFourK">Television 4K (3840x2160)</button>
+                <button id="cinemaFourK">Cinema 4K (4096x2160)</button>
+                <button id="eightK">8K</button>
+            </div>
+        </div>
+
+        <div id="videoblock" style="display: block;">
+            <p id="dimensions">Actual video dimensions: 640x480px.</p>
+
+            <video id="gum-res-local" playsinline="" autoplay=""></video>
+            <!-- <div id="width hidden">
+                <label>Width <span>320</span>px:</label>
+                <input type="range" min="0" max="7680" value="0">
+            </div>
+            <input id="sizelock hidden" type="checkbox">Lock video size<br>
+            <input id="aspectlock hidden" type="checkbox">Lock aspect ratio<br> -->
+            <div>
+                <button id="capture">Capture</button>
+            </div>
+
+        </div>
+        <div id="canvas-wrapper" class="hidden">
+            <div>
+                <canvas #canvas id="canvas"></canvas>
+            </div>
+            <div class="hidden">
+                <img id="captured-image" src="" height="50" />
+            </div>
+            <div>
+                <button id="download-image">Download</button>
+            </div>
+        </div>
+        <p id="errormessage" style="display: none;"></p>
+
+    </div>
+
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="main.js" async=""></script>
+
+
+</body>
+
+</html>
