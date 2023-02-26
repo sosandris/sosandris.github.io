@@ -66,7 +66,9 @@ downloadImage.onclick = () => {
     var downloadLink = document.createElement('a');
     downloadLink.href = capturedImage.src
         .replace("image/jpeg", "image/octet-stream");
-    downloadLink.download = 'pearl-camera-photo.jpeg';
+    const res = `${currentWidth}x${currentHeight}`;
+    const cam = videoSelect.textContent;
+    downloadLink.download = `pearl-photo-${cam}-${res}.jpeg`;
 
     document.body.appendChild(downloadLink);
     downloadLink.click();
